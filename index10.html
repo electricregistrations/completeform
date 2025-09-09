@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Muft Bijli Yojana | Government of India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1976d2;
+      --primary-dark: #1565c0;
+      --secondary: #388e3c;
+      --success: #2e7d32;
+      --error: #d32f2f;
+      --surface: #ffffff;
+      --background: #fafafa;
+      --on-surface: #212121;
+      --on-surface-variant: #424242;
+      --outline: #e0e0e0;
+      --shadow: 0 2px 8px rgba(0,0,0,0.12);
+      --elevation: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--background);
+      color: var(--on-surface);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: var(--surface);
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+      transition: filter 0.3s ease;
+    }
+
+    .container.blur {
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 20px 24px;
+      position: relative;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gov-logo {
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow);
+    }
+
+    .gov-logo .material-icons {
+      color: var(--primary);
+      font-size: 24px;
+    }
+
+    .header-text h1 {
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .header-text p {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .scheme-tag {
+      background: rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 11px;
+      font-weight: 500;
+      margin-top: 12px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* Content */
+    .content {
+      padding: 24px;
+    }
+
+    .status {
+      background: var(--secondary);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .verification {
+      background: #f0f9ff;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 24px;
+    }
+
+    .verification-content {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .verification-content .material-icons {
+      color: var(--secondary);
+      font-size: 18px;
+    }
+
+    .verification-text {
+      font-size: 12px;
+      color: var(--on-surface-variant);
+      font-weight: 500;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .modi-image {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 90px;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    .hero-content {
+      padding-right: 80px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 15px;
+      color: var(--on-surface-variant);
+    }
+
+    /* Highlight */
+    .highlight {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 24px;
+      box-shadow: var(--elevation);
+    }
+
+    .highlight-amount {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .highlight-text {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat {
+      background: var(--outline);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--on-surface-variant);
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .feature {
+      background: var(--surface);
+      border: 1px solid var(--outline);
+      padding: 20px 16px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .feature:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--elevation);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+    }
+
+    .feature-icon .material-icons {
+      color: white;
+      font-size: 20px;
+    }
+
+    .feature-title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 10px;
+      color: var(--on-surface-variant);
+    }
+
+    /* Download */
+    .download-section {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .download-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 12px;
+      color: var(--on-surface-variant);
+    }
+
+    .download-header .material-icons {
+      color: var(--secondary);
+      font-size: 16px;
+    }
+
+    .download-btn {
+      background: var(--error);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: var(--shadow);
+      transition: all 0.2s ease;
+      font-family: inherit;
+      margin-bottom: 12px;
+    }
+
+    .download-btn:hover {
+      background: #c62828;
+      transform: translateY(-1px);
+      box-shadow: var(--elevation);
+    }
+
+    .download-btn:disabled {
+      background: #bdbdbd;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .app-info {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 11px;
+      color: var(--on-surface-variant);
+    }
+
+    /* Progress */
+    .progress-section {
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .progress-title {
+      font-weight: 600;
+    }
+
+    .progress-count {
+      color: var(--on-surface-variant);
+      font-size: 12px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--secondary);
+      width: 0%;
+      border-radius: 4px;
+      transition: width 2s ease;
+    }
+
+    .progress-info {
+      font-size: 12px;
+      color: var(--secondary);
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .footer-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .footer-subtitle {
+      font-size: 12px;
+      color: var(--on-surface-variant);
+      margin-bottom: 12px;
+    }
+
+    .footer-badges {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .footer-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    .footer-badge .material-icons {
+      font-size: 14px;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal {
+      background: var(--surface);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 300px;
+      width: 90%;
+      text-align: center;
+      box-shadow: var(--elevation);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-overlay.show .modal {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: white;
+    }
+
+    .modal-icon.success {
+      background: var(--secondary);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      font-size: 14px;
+      color: var(--on-surface-variant);
+      margin-bottom: 16px;
+    }
+
+    .modal-progress {
+      height: 4px;
+      background: #e0e0e0;
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .modal-progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .container {
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+      
+      .hero-content {
+        padding-right: 70px;
+      }
+      
+      .modi-image {
+        width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-content">
+        <div class="gov-logo">
+          <span class="material-icons">account_balance</span>
+        </div>
+        <div class="header-text">
+          <h1>PM Muft Bijli Yojana</h1>
+          <p>Ministry of Power, Govt of India</p>
+        </div>
+      </div>
+      <div class="scheme-tag">Digital India Initiative</div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+      <!-- Status -->
+      <div class="status">
+        <span class="material-icons">check_circle</span>
+        <span>Scheme Active - Registration Open</span>
+      </div>
+
+      <!-- Verification -->
+      <div class="verification">
+        <div class="verification-content">
+          <span class="material-icons">verified</span>
+          <div class="verification-text">Verified by Press Information Bureau, Government of India</div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <div class="hero">
+        <img src="https://www.pngplay.com/wp-content/uploads/7/Narendra-Modi-PMO-India-Transparent-PNG.png" 
+             alt="Prime Minister" class="modi-image">
+        <div class="hero-content">
+          <h2 class="hero-title">Free Electricity for Every Household</h2>
+          <p class="hero-subtitle">300 units monthly subsidy under government initiative</p>
+        </div>
+      </div>
+
+      <!-- Highlight -->
+      <div class="highlight">
+        <div class="highlight-amount">₹0</div>
+        <div class="highlight-text">Monthly bill for first 300 units of electricity</div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-number">83.2L+</div>
+          <div class="stat-label">Registered</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">₹2,400</div>
+          <div class="stat-label">Avg Savings</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4.8★</div>
+          <div class="stat-label">Rating</div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">
+            <span class="material-icons">home</span>
+          </div>
+          <div class="feature-title">All Households</div>
+          <div class="feature-desc">Owned & rental properties</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <span class="material-icons">calendar_today</span>
+          </div>
+          <div class="feature-title">Monthly Benefit</div>
+          <div class="feature-desc">300 units subsidy</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <span class="material-icons">group</span>
+          </div>
+          <div class="feature-title">Limited Slots</div>
+          <div class="feature-desc">1 crore beneficiaries</div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <span class="material-icons">smartphone</span>
+          </div>
+          <div class="feature-title">Digital Process</div>
+          <div class="feature-desc">App-based registration</div>
+        </div>
+      </div>
+
+      <!-- Download -->
+      <div class="download-section">
+        <div class="download-header">
+          <span class="material-icons">security</span>
+          <span>Secure download from government server</span>
+        </div>
+        <button class="download-btn" id="downloadBtn">
+          <span class="material-icons">download</span>
+          Download Official Application
+        </button>
+        <div class="app-info">
+          <span>Size: 2.1 MB</span>
+          <span>Version: 1.0</span>
+          <span>Secure APK</span>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-section">
+        <div class="progress-header">
+          <div class="progress-title">Registration Status</div>
+          <div class="progress-count">83,24,112 / 1,00,00,000</div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-info">16,75,888 slots available</div>
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="footer-title">Government of India</div>
+        <div class="footer-subtitle">Ministry of Power & New & Renewable Energy</div>
+        <div class="footer-badges">
+          <div class="footer-badge">
+            <span class="material-icons">security</span>
+            <span>Secure</span>
+          </div>
+          <div class="footer-badge">
+            <span class="material-icons">verified</span>
+            <span>Verified</span>
+          </div>
+          <div class="footer-badge">
+            <span class="material-icons">lock</span>
+            <span>Official</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon" id="modalIcon">
+        <span class="material-icons">download</span>
+      </div>
+      <div class="modal-title" id="modalTitle">Preparing Download</div>
+      <div class="modal-subtitle" id="modalSubtitle">Connecting to secure server</div>
+      <div class="modal-progress">
+        <div class="modal-progress-fill" id="modalProgressFill"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let appData = null;
+    let isReady = false;
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initApp();
+      setupEvents();
+      animateProgress();
+    });
+
+    function initApp() {
+      setTimeout(() => {
+        const data = 'PM_MUFT_BIJLI_YOJANA_OFFICIAL';
+        appData = new Blob([data], { type: 'application/vnd.android.package-archive' });
+        isReady = true;
+        console.log('App ready');
+      }, 800);
+    }
+
+    function setupEvents() {
+      const downloadBtn = document.getElementById('downloadBtn');
+      
+      downloadBtn.addEventListener('click', function() {
+        if (isReady && appData) {
+          startDownload();
+        } else {
+          downloadBtn.disabled = true;
+          downloadBtn.innerHTML = '<span class="material-icons">hourglass_empty</span>Preparing...';
+          
+          const check = setInterval(() => {
+            if (isReady && appData) {
+              clearInterval(check);
+              downloadBtn.disabled = false;
+              downloadBtn.innerHTML = '<span class="material-icons">download</span>Download Official Application';
+              startDownload();
+            }
+          }, 100);
+        }
+      });
+    }
+
+    function startDownload() {
+      const modal = document.getElementById('modalOverlay');
+      const container = document.getElementById('container');
+      const modalIcon = document.getElementById('modalIcon');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalSubtitle = document.getElementById('modalSubtitle');
+      const modalProgressFill = document.getElementById('modalProgressFill');
+      
+      modal.classList.add('show');
+      container.classList.add('blur');
+      
+      modalTitle.textContent = 'Initiating Download';
+      modalSubtitle.textContent = 'Preparing file transfer';
+      
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 50;
+        modalProgressFill.style.width = progress + '%';
+        
+        if (progress === 50) {
+          modalTitle.textContent = 'Download Started';
+          modalSubtitle.textContent = 'Choose save location';
+        } else if (progress >= 100) {
+          clearInterval(interval);
+          
+          modalIcon.innerHTML = '<span class="material-icons">check_circle</span>';
+          modalIcon.classList.add('success');
+          modalTitle.textContent = 'Ready to Save';
+          modalSubtitle.textContent = 'File prepared successfully';
+          
+          setTimeout(() => {
+            triggerDownload();
+            setTimeout(() => closeModal(), 600);
+          }, 400);
+        }
+      }, 300);
+    }
+
+    function triggerDownload() {
+      const url = URL.createObjectURL(appData);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'PM_MuftBijliYojana.apk';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      URL.revokeObjectURL(url);
+      
+      const downloadBtn = document.getElementById('downloadBtn');
+      downloadBtn.innerHTML = '<span class="material-icons">check</span>Download Initiated';
+      downloadBtn.style.background = 'var(--secondary)';
+      
+      setTimeout(() => {
+        downloadBtn.innerHTML = '<span class="material-icons">download</span>Download Official Application';
+        downloadBtn.style.background = 'var(--error)';
+      }, 3000);
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('modalOverlay');
+      const container = document.getElementById('container');
+      
+      modal.classList.remove('show');
+      container.classList.remove('blur');
+      
+      setTimeout(() => {
+        const modalIcon = document.getElementById('modalIcon');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalSubtitle = document.getElementById('modalSubtitle');
+        const modalProgressFill = document.getElementById('modalProgressFill');
+        
+        modalIcon.innerHTML = '<span class="material-icons">download</span>';
+        modalIcon.classList.remove('success');
+        modalTitle.textContent = 'Preparing Download';
+        modalSubtitle.textContent = 'Connecting to secure server';
+        modalProgressFill.style.width = '0%';
+      }, 300);
+    }
+
+    function animateProgress() {
+      const progressFill = document.getElementById('progressFill');
+      setTimeout(() => {
+        progressFill.style.width = '83%';
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
